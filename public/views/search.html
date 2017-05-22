@@ -1,0 +1,27 @@
+<div class="container">
+
+
+  <div class="input-group search-bar">
+    <input type="text" ng-model="search" ng-model-options="{debounce: 800}" onclick="select()" class="form-control" placeholder="Search movie on IMDB" autofocus>
+    <span class = "input-group-addon bar-style"><i class="glyphicon glyphicon-search"></i></span>
+  </div>
+
+  <div class="text-center">
+      <a ui-sref="home.create" class= "btn btn-success" >Enter your own collection</a>
+      <button ng-if="!search"  class="btn btn-primary" disabled="true"> Start Typing in Searchbox!!</button>
+      <!-- <a ng-if="search"ui-sref="home" class= "btn btn-primary" ng-disabled="details.Response==='False'" ng-click="add()">Add to your Collection!</a> -->
+      <button ng-if="search&&details.Response==='False'" class= "btn btn-primary" disabled="true">No results</button>
+      <a ng-if="details.Response==='True'"ui-sref="home" class= "btn btn-primary"  ng-click="add()">Add <strong><span>'{{details.Title}}'</span> </strong>to your Collection!</a>
+  </div>
+
+</div>
+<div class= "row">
+  <div class="col-md-8">
+    <div  ng-include="'views/searchResult.html'" class="col-md-8"></div>
+  </div>
+</div>
+<div class= "row">
+  <div class="col-md-8">
+    <div  ng-include="'views/searchRelated.html'" class="col-md-8"></div>
+  </div>
+</div>

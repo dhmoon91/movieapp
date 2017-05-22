@@ -1,0 +1,44 @@
+
+<div class="container">
+  <h1>Create your own entry</h1>
+<form name = "custom">
+    <div class="form-group">
+        <label for="title">Title (Required)</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter title of the movie" required ng-model="movie.title">
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre (Required)</label>
+        <input type="text" class="form-control" id="genre" placeholder="Enter Genre of the movie" required  ng-model="movie.genre">
+    </div>
+    <div class="form-group">
+        <label for="actors">Actors (Required)</label>
+        <input type="text" class="form-control" id="actors" placeholder="Enter actosr of the movie" required  ng-model="movie.actors">
+    </div>
+    <div class="form-group">
+        <label for="year">Year (Required)</label>
+        <input type="text" class="form-control" id="year" placeholder="Enter year of the movie" required ng-model="movie.year">
+    </div>
+    <div class="form-group">
+        <label for="release">Release Date</label>
+        <input type="text" class="form-control" id="release" placeholder="Enter release date of the movie (dd mm yyyy)" ng-model="movie.released">
+    </div>
+    <div class="form-group">
+        <label for="plot">Plot</label>
+        <input type="text" class="form-control" id="plot" placeholder="Enter plot of the movie" ng-model="movie.plot">
+    </div>
+    <div class="form-group">
+        <label for="director">Director</label>
+        <input type="text" class="form-control" id="director" placeholder="Enter Director of the movie" ng-model="movie.director">
+    </div>
+    <div class="form-group">
+        <label for="runtime">Runtime</label>
+        <input type="text" class="form-control" id="runtime" placeholder="Enter runtime of the movie" ng-model="movie.runtime">
+    </div>
+
+
+      <div class="text-center">
+    <button type="submit" class="btn btn-primary" ng-click="add()">Submit</button>
+  </div>
+    <!-- <a ui-sref="home" class= "btn btn-primary" ng-click="add()">Add to your Collection!</a> -->
+</form>
+</div>

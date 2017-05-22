@@ -1,0 +1,31 @@
+<!-- Navigation -->
+  <nav class="navbar navbar-inverse " role="navigation" >
+		<div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" ui-sref="home"><b>Movie Collection</b></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-collapse">
+              <ul class="nav navbar-nav">
+                <li><a ui-sref="home.search">Search Movie on IMDB</a></li>
+                <li><a ui-sref="home.create">Create your own entry</a></li>
+              </ul>
+    					<ul class="nav navbar-nav navbar-right">
+        				<li ng-if="!user"><a ui-sref="home.login">Login</a></li>
+        				<li ng-if="!user"><a ui-sref="home.signup">Sign up</a></li>
+        				<li ng-if="user"><a ng-click="signOut()">Sign Out</a></li>
+              </ul>
+          </div>
+        <!-- <li ng-if="user">USER LOGGED IN</li>
+     <li ><a ui-sref="home.login">Login</a></li>
+				<li><a ui-sref="home.signup">Sign up</a></li>
+				<li ><a ng-click="signOut()">Sign Out</a></li> -->
+
+
+		</div>
+</nav>

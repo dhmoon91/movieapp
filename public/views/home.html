@@ -1,0 +1,101 @@
+
+<!-- <ul ng-repeat="movie in movies">
+  <li>
+
+  </li>
+</ul> -->
+<section id="setBackground">
+<div class="container">
+
+  <h1 ng-if="user">Welcome {{user.username}}</h1>
+  <div ng-if="!user">
+    <h1>You are not logged in!</h1>
+      <h1>Your collection won't be saved</h1>
+  </div>
+
+
+  <!-- <button ng-click="show=!show">toggle</button> -->
+
+  <div class="row" >
+  		<div class="col-xs-12" >
+  			<form class="form-inline text-center" >
+  				<span class="glyphicon glyphicon-search" ></span >
+  						<input type="text"
+  						       class="form-control"
+  						       id="name"
+  						       ng-model="searchTitle"
+  						       placeholder="Search by Title..."
+  								/>
+
+  						<input type="text"
+  						       class="form-control"
+  						       id="name"
+  						       ng-model="searchGenre"
+  						       placeholder="Search by Genre..."
+  								/>
+
+  						<input type="text"
+  						       class="form-control"
+  						       id="name"
+  						       ng-model="searchActors"
+  						       placeholder="Search by Actors..."
+  								/>
+
+  			</form >
+  		</div >
+  	</div >
+    <div class = "text-center" ng-if = "resultFound">
+      <p>NO RESULT FOUND FOR:   <span ng-if="searchTitle"> <strong>TITLE:</strong> {{searchTitle}} </span>   <span ng-if="searchGenre"><strong> GENRE:</strong> {{searchGenre}} </span> <span ng-if="searchActors"><strong>ACTORS:</strong> {{searchActors}} </span> </p>
+    </div>
+</div>
+
+
+<div class = "fade-in-out container" ng-show="show">
+      <img style='float:left; margin-right:20px; height:400' ng-src="{{ movieDetail.image=='N/A'||movieDetail.image === null ? 'http://placehold.it/150x220&text=N/A' : movieDetail.image }}" class="img-thumbnail">
+      <span class="span-outer">
+        <strong>{{ movieDetail.title }}</strong>
+      </span>, {{ movieDetail.year }}
+      <p>Released on: {{ movieDetail.released === null || movieDetail.released === undefined ? movieDetail.year : movieDetail.released}} </p>
+      <p>Runtime: {{ movieDetail.runtime === null || movieDetail.runtime === undefined ? 'N/A' : movieDetail.runtime }} </p>
+      <p>Plot: {{ movieDetail.plot === null || movieDetail.plot === undefined ? 'N/A' : movieDetail.plot}}</p>
+
+      <p class="outer-p">
+        <div class="inner-p">
+          <span class="label label-primary">Directors :</span> {{ movieDetail.director === null ||  movieDetail.director === undefined ? 'N/A' : movieDetail.director }}
+        </div>
+        <div class="inner-p">
+          <span class="label label-primary">Actors :</span> {{ movieDetail.actors }}
+        </div>
+        <div class="inner-p">
+          <span class="label label-primary">Genre :</span> {{ movieDetail.genre }}
+        </div>
+      </p>
+
+      <p>
+        <strong>IMDb Rating</strong>: <span class="label label-success">{{ movieDetail.imdbRating === null|| movieDetail.imdbRating === undefined ? 'N/A' : movieDetail.imdbRating}}</span><br>
+      </p>
+      <button class="btn btn-danger" ng-click = "deleteMovie(movieDetail); show=!show">Delete</button>
+      <button class="btn btn-warning" ng-click="show=!show">Close</button>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 container_img" ng-repeat="movie in movies | filter:search">
+    <p >{{ movie.title.length >25 ? movie.title.substring(0,25)+'...' : movie.title}}, {{movie.year}}</p>
+    <img ng-src="{{ movie.image=='N/A'||movie.image === null || movie.image === undefined ? 'http://placehold.it/150x220&text=N/A' : movie.image }}" class="img-thumbnail"id="img_center">
+    <div class="img_caption">
+          <div class="img_text">
+            <p><strong>Title:</strong> {{movie.title}}</p>
+            <p><strong>Release:</strong> {{movie.released === null || movie.released === undefined ? 'N/A' : movie.released}}</p>
+            <p><strong>Genre:</strong> {{movie.genre}}</p>
+            <p><strong>Actors:</strong> {{movie.actors}}</p>
+            <p><strong>Director:</strong> {{movie.director === null||movie.director === undefined ? 'N/A' : movie.director}}</p>
+          </div>
+    </div>
+    <button class="btn btn-danger" ng-click = "deleteMovie(movie)">Delete</button>
+      <button class="btn btn-info" ng-click="showDetail(movie)">Detail</button>
+  </div>
+</div>
+
+<!-- <div ui-view> </div> -->
+</section>

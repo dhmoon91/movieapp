@@ -1,0 +1,41 @@
+<!-- <div ng-if="!details">
+  <span>{{search}}</span>
+</div> -->
+
+<div ng-if="details.Response==='False' && search">
+  <p>  No results found for: '<span><strong>{{search}}</strong></span>'.</p>
+</div>
+
+<div ng-if="details.Response==='True' && search">
+  <p>  Result found for: '<span><strong>{{search}}</strong></span>'.</p>
+</div>
+
+<div ng-if="details.Response==='True'">
+    <img ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}" class="img-thumbnail ">
+  <span class="span-outer">
+    {{ details.Title }}
+  </span>, {{ details.Year }}
+
+  <p><strong>Released on:</strong> {{ details.Released }} ({{ details.Runtime }})</p>
+
+  <p>{{ details.Plot }}</p>
+
+  <p class="outer-p">
+    <div class="inner-p">
+      <span class="label label-primary">Directors :</span> {{ details.Director }}
+    </div>
+    <div class="inner-p">
+      <span class="label label-primary">Actors :</span> {{ details.Actors }}
+    </div>
+    <div class="inner-p">
+      <span class="label label-primary">Genre :</span> {{ details.Genre }}
+    </div>
+  </p>
+
+  <p>
+    <strong>IMDb Rating</strong>: <span class="label label-success">{{ details.imdbRating }}</span><br>
+  </p>
+
+
+</div>
+</div>
