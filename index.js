@@ -1,6 +1,7 @@
 var mysql = require('mysql');
 var express = require('express');
 var app = express();
+var fs = require('fs');
 var bcrypt = require('bcryptjs');
 var bodyParser = require('body-parser');
 var port = process.env.PORT ||3000;
@@ -13,7 +14,10 @@ var connection = mysql.createConnection({
  // user     : 'root',
  // password : 'password',
  // database: 'moviedb',
- port     : 3306
+ port     : 3306,
+ssl: {
+  ca:fs.readFileSync('./config/amazon-rds-ca-cert.pem')
+}
 });
 
 connection.connect(function(err) {
