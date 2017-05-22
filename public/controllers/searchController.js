@@ -16,12 +16,12 @@ angular.module('searchController',[])
 
  function fetch () {
    console.log("SEARCH FOR MOVIE: KEY: " + $scope.search);
-   $http.get("http://www.omdbapi.com/?apikey=f6709120&t=" + $scope.search + "&tomatoes=true&plot=full")
+   $http.get("https://www.omdbapi.com/?apikey=f6709120&t=" + $scope.search + "&tomatoes=true&plot=full")
       .then(function(response){
           $scope.details = response.data;
           console.log($scope.details);
       });
-      $http.get("http://www.omdbapi.com/?apikey=f6709120&s=" + $scope.search)
+      $http.get("https://www.omdbapi.com/?apikey=f6709120&s=" + $scope.search)
       .then(function(response){ $scope.related = response.data; });
     }
 
