@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
  // password : 'password',
  // database: 'moviedb',
  port     : 3306,
-ssl: {
+ ssl: {
   ca:fs.readFileSync('./config/amazon-rds-ca-cert.pem')
 }
 });
@@ -39,6 +39,7 @@ app.post('/auth/signup', function (req,res) {
   var body = req.body;
   var sql = 'INSERT INTO user SET ?';
 
+  //encrypt user's password using bcrypt
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(body.password, salt);
 
@@ -114,7 +115,7 @@ app.post('/delete', function (req,res) {
   });
 });
 
-////////**   API CALLS  ENDD  **////////
+////////**   API CALLS  END  **////////
 
 
 

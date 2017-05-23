@@ -1,11 +1,12 @@
 <div class="container">
 
-
+  <!--SEARCH INPUT BAR-->
   <div class="input-group search-bar">
     <input type="text" ng-model="search" ng-model-options="{debounce: 800}"  class="form-control" placeholder="Search movie on IMDB" autofocus>
     <span class = "input-group-addon bar-style"><i class="glyphicon glyphicon-search"></i></span>
   </div>
 
+  <!--Buttons-->
   <div class="text-center">
       <a ui-sref="home.create" class= "btn btn-success" >Enter your own collection</a>
       <button ng-if="!search"  class="btn btn-primary" disabled="true"> Start Typing in Searchbox!!</button>
@@ -15,6 +16,8 @@
   </div>
 
 </div>
+
+<!--Show result from searching-->
 <div class= "row">
   <div class="col-md-8">
     <div  ng-include="'views/searchResult.html'" class="col-md-8"></div>

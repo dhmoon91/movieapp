@@ -24,22 +24,12 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider){
   })
   .state ('home.search', {
     url:'search',
-    // templateUrl: 'views/search.html',
     views: {
       '@': {
         templateUrl: 'views/search.html',
         controller:'SearchController'
       }
     }
-
-    // views: {
-    //   '':{templateUrl: 'views/search.html',
-    //         controller: 'SearchController'},
-    //   'movieResult@search': {
-    //
-    //   }
-    // }
-
   })
 
   .state('home.create', {
@@ -76,22 +66,3 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider){
 
 
 });
-
-//
-// .controller("movieController", ["$scope", function ($scope){
-//   $scope.tutorialObject = {};
-// 	$scope.tutorialObject.title = "movie";
-// 	$scope.tutorialObject.subTitle = "Sub Ttitle";
-//
-// 	$scope.tutorialObject.bindOutput = 2;
-//
-// 	$scope.tutorialObject.firstname = "Thomas";
-// 	$scope.tutorialObject.lastname = "Brown";
-//
-// 	$scope.timesTwo = function () {
-// 		 $scope.tutorialObject.bindOutput *= 2;
-// 		// $scope.tutorialObject.bindOutput = Calculations.timesTwo($scope.tutorialObject.bindOutput)
-// 	}
-//
-//
-// }]);

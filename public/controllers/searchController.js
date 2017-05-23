@@ -32,6 +32,7 @@ angular.module('searchController',[])
  $scope.select = function(){
       this.setSelectionRange(0, this.value.length);
     }
+
   $scope.add = function () {
     $scope.movie.year= $scope.details.Year;
     $scope.movie.image= $scope.details.Poster;

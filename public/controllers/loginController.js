@@ -25,8 +25,6 @@ angular.module('loginController',[])
         $scope.loginError = err.data
       });
     }
-
-
   }
 
 }]);
