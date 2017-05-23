@@ -40,13 +40,15 @@
   						       ng-model="searchActors"
   						       placeholder="Search by Actors..."
   								/>
-
+          <button class="btn btn-primary" ng-click= "searchTitle='';searchGenre='';searchActors='';  ">Reset</button>
   			</form >
+
   		</div >
   	</div >
     <div class = "text-center" ng-if = "resultFound">
-      <p>NO RESULT FOUND FOR:   <span ng-if="searchTitle"> <strong>TITLE:</strong> {{searchTitle}} </span>   <span ng-if="searchGenre"><strong> GENRE:</strong> {{searchGenre}} </span> <span ng-if="searchActors"><strong>ACTORS:</strong> {{searchActors}} </span> </p>
+      <p>RESULT FOR:   <span ng-if="searchTitle"> <strong>TITLE:</strong> {{searchTitle}} </span>   <span ng-if="searchGenre"><strong> GENRE:</strong> {{searchGenre}} </span> <span ng-if="searchActors"><strong>ACTORS:</strong> {{searchActors}} </span> </p>
     </div>
+
 </div>
 
 
@@ -74,10 +76,6 @@
       <p>
         <strong>IMDb Rating</strong>: <span class="label label-success">{{ movieDetail.imdbRating === null|| movieDetail.imdbRating === undefined ? 'N/A' : movieDetail.imdbRating}}</span><br>
       </p>
-      <!-- <button class="btn btn-danger" ng-click = "deleteMovie(movieDetail); show=!show">Delete</button> -->
-
-
-
       <button class="btn btn-danger" ng-if="!user" ng-click = "deleteLocal(movieDetail.index); show=!show">Delete</button>
       <button class="btn btn-danger" ng-if="user" ng-click = "deleteServer(movieDetail); show=!show">Delete</button>
 

@@ -35,7 +35,7 @@ angular.module('homeController',[])
   $scope.search = function(movie) {
       $scope.resultFound = false;
     if ( $scope.searchTitle || $scope.searchGenre ||$scope.searchActors) {
-      console.log("in if");
+      $scope.resultFound = true;
       $scope.searchGenreParsed = $scope.searchGenre.split(" ");
       $scope.searchActorsParsed = $scope.searchActors.split(" ");
       $scope.genreCounter = 0;
@@ -50,17 +50,16 @@ angular.module('homeController',[])
       for(var i in $scope.searchActorsParsed){
         if(movie.actors.toLowerCase().indexOf($scope.searchActorsParsed[i].toLowerCase() ) !== -1)
         {
-          console.log("GOT ONE");
           $scope.actorsCounter ++;
         }
       }
 
       if(movie.title.toLowerCase().indexOf($scope.searchTitle.toLowerCase()) !== -1 &&
           $scope.genreCounter === $scope.searchGenreParsed.length &&
-            $scope.actorsCounter === $scope.searchActorsParsed.length){
+          $scope.actorsCounter === $scope.searchActorsParsed.length){
         return true;
       }
-      $scope.resultFound = true;
+
       return false;
     }
     return true;
