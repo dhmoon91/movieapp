@@ -66,26 +66,31 @@ angular.module('homeController',[])
     return true;
 	};
 
-  $scope.deleteMovie = function(movie){
-    $scope.mid =
-    $http.post('/delete',movie).then(function(res){
-        console.log("Successfully Deleted movie from database");
-
-        if($scope.movieDetail.mid){
-          if(movie.mid === $scope.movieDetail.mid){
-                      $scope.show=false;
+  $scope.deleteServer = function(movie){
+      $http.post('/delete',movie).then(function(res){
+          console.log("Successfully Deleted movie from database");
+          if($scope.movieDetail.mid){
+            if(movie.mid === $scope.movieDetail.mid){
+                $scope.show=false;
+            }
           }
-
-        }
-        getMovie();
-      },function(err){
-
-    });
+          getMovie();
+        },function(err){
+      });
   };
 
-  $scope.showDetail = function(movie){
+  $scope.deleteLocal = function (index){
+    if(index === $scope.movieDetail.index){
+        $scope.show=false;
+    }
+    movieService.delete(index);
+    $scope.movies = movieService.getList();
+  }
+
+  $scope.showDetail = function(movie,index){
      $scope.show = true;
      $scope.movieDetail = movie;
+     $scope.movieDetail.index =  index;
   };
 
 

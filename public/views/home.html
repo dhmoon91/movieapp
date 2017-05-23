@@ -51,7 +51,7 @@
 
 
 <div class = "fade-in-out container" ng-show="show">
-      <img style='float:left; margin-right:20px; height:400' ng-src="{{ movieDetail.image=='N/A'||movieDetail.image === null ? 'http://placehold.it/150x220&text=N/A' : movieDetail.image }}" class="img-thumbnail">
+      <img style='float:left; margin-right:20px; height:400' ng-src="{{ movieDetail.image=='N/A'||movieDetail.image === undefined ? 'http://placehold.it/150x220&text=N/A' : movieDetail.image }}" class="img-thumbnail">
       <span class="span-outer">
         <strong>{{ movieDetail.title }}</strong>
       </span>, {{ movieDetail.year }}
@@ -74,7 +74,13 @@
       <p>
         <strong>IMDb Rating</strong>: <span class="label label-success">{{ movieDetail.imdbRating === null|| movieDetail.imdbRating === undefined ? 'N/A' : movieDetail.imdbRating}}</span><br>
       </p>
-      <button class="btn btn-danger" ng-click = "deleteMovie(movieDetail); show=!show">Delete</button>
+      <!-- <button class="btn btn-danger" ng-click = "deleteMovie(movieDetail); show=!show">Delete</button> -->
+
+
+
+      <button class="btn btn-danger" ng-if="!user" ng-click = "deleteLocal(movieDetail.index); show=!show">Delete</button>
+      <button class="btn btn-danger" ng-if="user" ng-click = "deleteServer(movieDetail); show=!show">Delete</button>
+
       <button class="btn btn-warning" ng-click="show=!show">Close</button>
 </div>
 
@@ -82,7 +88,7 @@
 <div class="row">
   <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 container_img" ng-repeat="movie in movies | filter:search">
     <p >{{ movie.title.length >25 ? movie.title.substring(0,25)+'...' : movie.title}}, {{movie.year}}</p>
-    <img ng-src="{{ movie.image=='N/A'||movie.image === null || movie.image === undefined ? 'http://placehold.it/150x220&text=N/A' : movie.image }}" class="img-thumbnail"id="img_center">
+    <img ng-src="{{ movie.image=='N/A'||movie.image === null || movie.image === undefined ? 'https://placehold.it/150x220&text=N/A' : movie.image }}" class="img-thumbnail"id="img_center">
     <div class="img_caption">
           <div class="img_text">
             <p><strong>Title:</strong> {{movie.title}}</p>
@@ -92,8 +98,9 @@
             <p><strong>Director:</strong> {{movie.director === null||movie.director === undefined ? 'N/A' : movie.director}}</p>
           </div>
     </div>
-    <button class="btn btn-danger" ng-click = "deleteMovie(movie)">Delete</button>
-      <button class="btn btn-info" ng-click="showDetail(movie)">Detail</button>
+    <button class="btn btn-danger" ng-if="!user" ng-click = "deleteLocal($index)">Delete</button>
+    <button class="btn btn-danger" ng-if="user" ng-click = "deleteServer(movie)">Delete</button>
+      <button class="btn btn-info" ng-click="showDetail(movie, $index)">Detail</button>
   </div>
 </div>
 
