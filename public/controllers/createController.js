@@ -9,7 +9,7 @@ angular.module('createController',[])
   $scope.movie = {}
 
   $scope.add = function () {
-  if($scope.movie.title && $scope.movie.genre && $scope.movie.actors) {
+  if($scope.movie.title && $scope.movie.genre && $scope.movie.actors && $scope.movie.year) {
     if($scope.uid){
       $scope.movie.mid = uuid2.newuuid();
       $scope.movie.uid = $scope.uid;
